@@ -1,0 +1,366 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        WindowStartupLocation="CenterScreen"
+		Height="560" Width="700"
+        x:Class="MP4practic.AddOrRedactProduct"
+		Icon="/icon.ico"
+        FontFamily="Comic Sans MS"
+        Title="AddOrRedactProduct">
+	<Grid
+		ShowGridLines="True"
+		RowDefinitions="50,*,50"
+		ColumnDefinitions="*,*">
+		<!--верхняя часть главного окна-->
+		<StackPanel
+			Background="#76e383"
+			Grid.ColumnSpan="2">
+		</StackPanel>
+		<!--логотип-->
+		<StackPanel
+			HorizontalAlignment="Left"
+			VerticalAlignment="Center"
+			Orientation="Horizontal">
+			<Image
+				Source="/logo.png"></Image>
+		</StackPanel>
+		<!--название-->
+		<StackPanel
+			Grid.ColumnSpan="2"
+			HorizontalAlignment="Center"
+			VerticalAlignment="Center"
+			Orientation="Horizontal">
+			<TextBlock
+				FontFamily="Comic Sans MS">ООО «Стройматериалы»</TextBlock>
+		</StackPanel>
+		<!--пользователь-->
+		<StackPanel
+			Grid.Column="2"
+			HorizontalAlignment="Right">
+			<TextBlock
+				FontFamily="Comic Sans MS"
+				Name="loginPassword"></TextBlock>
+		</StackPanel>
+		<!--центр-->
+		<StackPanel
+			Grid.Row="1"
+			Grid.Column="1"
+			HorizontalAlignment="Center">
+			<StackPanel
+				Height="10"></StackPanel>
+			<!--Возможная скидка-->
+			<StackPanel
+				Orientation="Horizontal"
+				VerticalAlignment="Center">
+				<TextBlock
+					VerticalAlignment="Center"
+					TextAlignment="Center"
+					Text="Возможная скидка"
+					FontFamily="Comic Sans MS"></TextBlock>
+				<StackPanel
+					Width="10"></StackPanel>
+				<TextBox
+					Name="MbSale"
+					Text="{Binding ProductDiscountAmount}"
+					FontFamily="Comic Sans MS"
+					Watermark="возможная скидка"></TextBox>
+			</StackPanel>
+			<!--действующая скидка-->
+			<StackPanel
+				Height="10"></StackPanel>
+			<StackPanel
+				Orientation="Horizontal"
+				VerticalAlignment="Center">
+				<TextBlock
+					VerticalAlignment="Center"
+					TextAlignment="Center"
+					Text="Действующая скидка"
+					FontFamily="Comic Sans MS"></TextBlock>
+				<StackPanel
+					Width="10"></StackPanel>
+				<TextBox
+					Name="Sale"
+					FontFamily="Comic Sans MS"
+					Text="{Binding ProductSall}"
+					Watermark="действующая скидка"></TextBox>
+			</StackPanel>
+			<!--Производитель-->
+			<StackPanel
+				Height="10"></StackPanel>
+			<StackPanel
+				Orientation="Horizontal"
+				VerticalAlignment="Center">
+				<TextBlock
+					VerticalAlignment="Center"
+					TextAlignment="Center"
+					Text="Производитель"
+					FontFamily="Comic Sans MS"></TextBlock>
+				<StackPanel
+					Width="10"></StackPanel>
+				<TextBox
+					Name="Proizvod"
+					FontFamily="Comic Sans MS"
+					TextWrapping="Wrap"
+					Text="{Binding ProductManufacturer}">
+				</TextBox>
+			</StackPanel>
+			<!--поставщик-->
+			<StackPanel
+				Height="10"></StackPanel>
+			<StackPanel
+				Orientation="Horizontal"
+				VerticalAlignment="Center">
+				<TextBlock
+					VerticalAlignment="Center"
+					TextAlignment="Center"
+					Text="Поставщик"
+					FontFamily="Comic Sans MS"></TextBlock>
+				<StackPanel
+					Width="10"></StackPanel>
+				<ComboBox
+					Name="Postavshic"
+					FontFamily="Comic Sans MS">
+					<ComboBox.ItemTemplate>
+						<DataTemplate>
+							<TextBlock
+								TextWrapping="Wrap"
+								Text="{Binding Deliveryname}"></TextBlock>
+						</DataTemplate>
+					</ComboBox.ItemTemplate>
+				</ComboBox>
+			</StackPanel>
+			<!--категория товара-->
+			<StackPanel
+				Height="10"></StackPanel>
+			<StackPanel
+				Orientation="Horizontal"
+				VerticalAlignment="Center">
+				<TextBlock
+					VerticalAlignment="Center"
+					TextAlignment="Center"
+					Text="Категория товара"
+					FontFamily="Comic Sans MS"></TextBlock>
+				<StackPanel
+					Width="10"></StackPanel>
+				<ComboBox
+					Name="KategorTovar"
+					FontFamily="Comic Sans MS">
+					<ComboBox.ItemTemplate>
+						<DataTemplate>
+							<TextBlock
+								TextWrapping="Wrap"
+								Text="{Binding Categoryname}"></TextBlock>
+						</DataTemplate>
+					</ComboBox.ItemTemplate>
+				</ComboBox>
+			</StackPanel>
+			<!--картинка-->
+			<StackPanel
+				Height="10"></StackPanel>
+			<StackPanel
+				Orientation="Horizontal">
+				<TextBlock
+					Text="Картинка"
+					FontFamily="Comic Sans MS"></TextBlock>
+				<StackPanel
+					Width="10"></StackPanel>
+				<TextBlock
+					Name="PhotoName"></TextBlock>
+			</StackPanel>
+			<StackPanel
+				Height="10"></StackPanel>
+			<Border
+				CornerRadius="6"
+				BorderBrush="Black">
+				
+							<Image
+								MaxHeight="200"
+								MaxWidth="300"
+								Name="ImageProduct"></Image>
+						
+			</Border>
+		</StackPanel>
+		<StackPanel
+			Grid.Row="1"
+			HorizontalAlignment="Center">
+			<StackPanel
+				Height="10"></StackPanel>
+			<!--артикул-->
+			<StackPanel
+				Orientation="Horizontal"
+				VerticalAlignment="Center">
+				<TextBlock
+					VerticalAlignment="Center"
+					TextAlignment="Center"
+					Text="Артикул"
+					FontFamily="Comic Sans MS"></TextBlock>
+				<StackPanel
+					Width="10"></StackPanel>
+				<TextBox
+					Name="Articule"
+					Text="{Binding ProductArticleNumber}"
+					FontFamily="Comic Sans MS"
+					TextWrapping="Wrap"
+					MaxWidth="120"
+					Watermark="артикул"></TextBox>
+			</StackPanel>
+			<!--название товара-->
+			<StackPanel
+				Height="10"></StackPanel>
+			<StackPanel
+				Orientation="Horizontal"
+				VerticalAlignment="Center">
+				<TextBlock
+					VerticalAlignment="Center"
+					TextAlignment="Center"
+					Text="Наименование товара"
+					FontFamily="Comic Sans MS"></TextBlock>
+				<StackPanel
+					Width="10"></StackPanel>
+				<TextBox
+					Text="{Binding ProductName}"
+					Name="NameProduct"
+					TextWrapping="Wrap"
+					MaxWidth="120"
+					FontFamily="Comic Sans MS"
+					Watermark="наименование"></TextBox>
+			</StackPanel>
+			<!--единицы	измерения-->
+			<StackPanel
+				Height="10"></StackPanel>
+			<StackPanel
+				Orientation="Horizontal"
+				VerticalAlignment="Center">
+				<TextBlock
+					VerticalAlignment="Center"
+					TextAlignment="Center"
+					Text="Единицы измерения"
+					FontFamily="Comic Sans MS"></TextBlock>
+				<StackPanel
+					Width="10"></StackPanel>
+				<ComboBox
+					Name="EdiProduct"
+					FontFamily="Comic Sans MS">
+					<ComboBox.ItemTemplate>
+						<DataTemplate>
+							<TextBlock
+								Text="{Binding Unitofmeasurement1}"></TextBlock>
+						</DataTemplate>
+					</ComboBox.ItemTemplate>
+				</ComboBox>
+			</StackPanel>
+			<!--стоимость-->
+			<StackPanel
+				Height="10"></StackPanel>
+			<StackPanel
+				Orientation="Horizontal"
+				VerticalAlignment="Center">
+				<TextBlock
+					VerticalAlignment="Center"
+					TextAlignment="Center"
+					Text="Стоимость"
+					FontFamily="Comic Sans MS"></TextBlock>
+				<StackPanel
+					Width="10"></StackPanel>
+				<TextBox
+					Text="{Binding ProductCost}"
+					Name="PriceProduct"
+					FontFamily="Comic Sans MS"
+					Watermark="наименование"></TextBox>
+			</StackPanel>
+			<!--количество на складе-->
+			<StackPanel
+				Height="10"></StackPanel>
+			<StackPanel
+				Orientation="Horizontal"
+				VerticalAlignment="Center">
+				<TextBlock
+					VerticalAlignment="Center"
+					TextAlignment="Center"
+					Text="Количество на складе"
+					FontFamily="Comic Sans MS"></TextBlock>
+				<StackPanel
+					Width="10"></StackPanel>
+				<TextBox
+					Text="{Binding ProductQuantityInStock}"
+					Name="KolInSclad"
+					FontFamily="Comic Sans MS"
+					Watermark="кол. на складе"></TextBox>
+			</StackPanel>
+			<!--Описание товара-->
+			<StackPanel
+				Height="10"></StackPanel>
+			<StackPanel
+				Orientation="Horizontal"
+				VerticalAlignment="Center">
+				<TextBlock
+					VerticalAlignment="Center"
+					TextAlignment="Center"
+					Text="Описание товара"
+					FontFamily="Comic Sans MS"></TextBlock>
+				<StackPanel
+					Width="10"></StackPanel>
+			</StackPanel>
+			<StackPanel
+				Height="10"></StackPanel>
+			<StackPanel>
+				<TextBox
+					Text="{Binding ProductDescription}"
+					MaxWidth="320"
+					Name="OpisanieProduct"
+					FontFamily="Comic Sans MS"
+					Watermark="описание товара"
+					TextWrapping="Wrap"></TextBox>
+			</StackPanel>
+		</StackPanel>
+		<!--низ-->
+		<StackPanel
+			Background="#76e383"
+			Grid.Row="2"
+			Grid.ColumnSpan="2"></StackPanel>
+		<StackPanel
+			Grid.Row="2"
+			Grid.ColumnSpan="2"
+			HorizontalAlignment="Right"
+			VerticalAlignment="Center"
+			Orientation="Horizontal">
+			<Button
+				Name="AddButton"
+				Content="Добавить товар"
+				Background="#498c51"
+				Click="AddButton_OnClick"
+				IsVisible="True"
+				FontFamily="Comic Sans MS"></Button>
+			<Button
+				Name="RedactButton"
+				Content="Редактировать товар"
+				Background="#498c51"
+				Click="RedactButton_OnClick"
+				IsVisible="False"
+				FontFamily="Comic Sans MS"></Button>
+			<StackPanel Width="10"></StackPanel>
+			<Button
+				Name="AddImage"
+				Click="AddImage_OnClick"
+				Background="#498c51"
+				Content="Добавить фото"></Button>
+		</StackPanel>
+		<StackPanel
+			Grid.Row="2"
+			Grid.Column="0"
+			HorizontalAlignment="Left"
+			VerticalAlignment="Center">
+			<Border
+				CornerRadius="6"
+				Background="#498c51">
+				<Button
+					Background="#498c51"
+					Content="Назад"
+					Name="CloseAdd"
+					Command="{Binding CloseAdd}">
+				</Button>
+			</Border>
+		</StackPanel>
+	</Grid>
+</Window>

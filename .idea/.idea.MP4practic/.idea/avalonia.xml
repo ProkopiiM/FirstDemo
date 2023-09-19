@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="Views/AddOrRedactProduct.axaml" value="MP4practic.csproj" />
+        <entry key="Views/Authorization.axaml" value="MP4practic.csproj" />
+        <entry key="Views/LobbyApp.axaml" value="MP4practic.csproj" />
+      </map>
+    </option>
+  </component>
+</project>

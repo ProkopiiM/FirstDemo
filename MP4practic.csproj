@@ -1,0 +1,66 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="icon.ico" />
+    <None Remove="ImageProducts\2G3280.jpg" />
+    <None Remove="ImageProducts\3L7RCZ.jpg" />
+    <None Remove="ImageProducts\3XBOTN.jpeg" />
+    <None Remove="ImageProducts\BPV4MM.jpg" />
+    <None Remove="ImageProducts\F895RB.jpg" />
+    <None Remove="ImageProducts\JVL42J.jpg" />
+    <None Remove="ImageProducts\MIO8YV.jpg" />
+    <None Remove="ImageProducts\picture.png" />
+    <None Remove="ImageProducts\PMEZMH.jpg" />
+    <None Remove="ImageProducts\S72AM3.jpg" />
+    <None Remove="ImageProducts\UER2QD.jpg" />
+    <None Remove="logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AvaloniaResource Include="icon.ico" />
+    <AvaloniaResource Include="ImageProducts\3L7RCZ.jpg" />
+    <AvaloniaResource Include="ImageProducts\BPV4MM.jpg" />
+    <AvaloniaResource Include="ImageProducts\F895RB.jpg" />
+    <AvaloniaResource Include="ImageProducts\JVL42J.jpg" />
+    <AvaloniaResource Include="ImageProducts\MIO8YV.jpg" />
+    <AvaloniaResource Include="ImageProducts\picture.png" />
+    <AvaloniaResource Include="ImageProducts\PMEZMH.jpg" />
+    <AvaloniaResource Include="ImageProducts\S72AM3.jpg" />
+    <AvaloniaResource Include="ImageProducts\UER2QD.jpg" />
+    <AvaloniaResource Include="logo.png" />
+    <None Remove="ImageProducts\Снимок.PNG" />
+    <AvaloniaResource Include="ImageProducts\Снимок.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AvaloniaResource Include="ImageProducts\2G3280.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectCapability Include="Avalonia" />
+    <TrimmerRootAssembly Include="Avalonia.Themes.Fluent" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="0.10.19" />
+    <PackageReference Include="Avalonia.Desktop" Version="0.10.19" />
+    <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
+    <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="0.10.19" />
+    <PackageReference Include="MessageBox.Avalonia" Version="2.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.TeamFoundationServer.ExtendedClient" Version="16.205.1" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.4" />
+    <PackageReference Include="XamlNameReferenceGenerator" Version="1.6.1" />
+  </ItemGroup>
+</Project>

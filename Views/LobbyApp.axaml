@@ -1,0 +1,345 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" WindowState="FullScreen"
+        x:Class="MP4practic.Views.LobbyApp"
+        Title="LobbyApp"
+		Icon="/icon.ico"
+		FontFamily="Comic Sans MS">
+	<Grid
+		ShowGridLines="True"
+		RowDefinitions="50,20,50,20,*,50">
+		<!--верхняя часть главного окна-->
+		<StackPanel
+			Background="#76e383">
+		</StackPanel>
+		<!--логотип-->
+		<StackPanel
+			HorizontalAlignment="Left"
+			VerticalAlignment="Center"
+			Orientation="Horizontal">
+			<Image
+				Source="/logo.png"></Image>
+		</StackPanel>
+		<!--название-->
+		<StackPanel
+			HorizontalAlignment="Center"
+			VerticalAlignment="Center"
+			Orientation="Horizontal">
+			<TextBlock
+				FontFamily="Comic Sans MS">ООО «Стройматериалы»</TextBlock>
+		</StackPanel>
+		<!--пользователь-->
+		<StackPanel
+			HorizontalAlignment="Right">
+			<TextBlock
+				FontFamily="Comic Sans MS"
+				Name="loginPassword"></TextBlock>
+		</StackPanel>
+		<!--строка поиска-->
+		<StackPanel
+			VerticalAlignment="Center"
+			Grid.Row="2"
+			HorizontalAlignment="Left">
+			<Border
+				Background="#76e383"
+				BorderBrush="Black"
+				CornerRadius="6">
+				<TextBlock
+					FontFamily="Comic Sans MS"
+					Name="countItems"></TextBlock>
+			</Border>
+		</StackPanel>
+		<StackPanel
+			Orientation="Horizontal"
+			Grid.Row="2"
+			HorizontalAlignment="Right"
+			VerticalAlignment="Center">
+			<StackPanel
+				Width="10"></StackPanel>
+			<TextBox
+				Background="#76e383"
+				Watermark="Поиск"
+				Height="25"
+				Name="SearchBox"
+				KeyUp="SearchBox_OnKeyUp"
+				Width="200"></TextBox>
+			<StackPanel
+				Width="25"></StackPanel>
+			<ComboBox
+				Width="200"
+				Background="#76e383"
+				Name="ComboProizvoditel"
+				MaxWidth="1000"
+				SelectedIndex="0">
+			<ComboBox.ItemTemplate>
+				<DataTemplate>
+						<StackPanel>
+							<TextBlock
+								Text="{Binding Manufacturername}"></TextBlock>
+						</StackPanel>
+				</DataTemplate>
+				</ComboBox.ItemTemplate>
+			</ComboBox>
+			<StackPanel
+				Width="25"></StackPanel>
+			<ComboBox
+				Background="#76e383"
+				Width="200"
+				Name="ComboUpDown"
+				SelectionChanged="ComboUpDown_OnSelectionChanged">
+				<ComboBox.Items>
+					<TextBlock
+						FontFamily="Comic Sans MS">По убыванию</TextBlock>
+					<TextBlock
+						FontFamily="Comic Sans MS">По возрастанию</TextBlock>
+				</ComboBox.Items>
+			</ComboBox>
+		</StackPanel>
+		<!--все элементы для админа-->
+			<Border
+				Grid.Row="4"
+				BorderBrush="#498c51"
+				BorderThickness="10">
+					<ListBox
+					Name="ListBoxItems"
+					FontFamily="Comic Sans MS"
+					SelectionMode="Toggle"
+					SelectedItem="{Binding ListProduct}">
+						<ListBox.ItemTemplate>
+							<DataTemplate>
+								<StackPanel
+									Width="1400"
+									Tag="{Binding Productarticlenumber}"
+									Orientation="Horizontal">
+									<Image
+										Name="imageProduct"
+										Height="200"
+										Width="300"
+										Source="{Binding ImageProduct}"></Image>
+									<StackPanel
+										Width="10"></StackPanel>
+									<StackPanel
+										Orientation="Vertical">
+										<StackPanel
+											Orientation="Horizontal">
+											<TextBlock
+												FontFamily="Comic Sans MS"
+												Text="Наименование товара:"
+												FontWeight="Bold"></TextBlock>
+											<StackPanel
+												Width="5"></StackPanel>
+											<TextBlock
+												FontWeight="Bold"
+												FontFamily="Comic Sans MS"
+												Text="{Binding ProductName}"></TextBlock>
+										</StackPanel>
+										<StackPanel
+											Orientation="Horizontal">
+											<TextBlock
+												FontFamily="Comic Sans MS"
+												Text="Описание товара:"></TextBlock>
+											<StackPanel
+												Width="5"></StackPanel>
+											<TextBlock
+												Width="500"
+												Name="OpisanieProduct"
+												FontFamily="Comic Sans MS"
+												Text="{Binding ProductDescription}"
+												TextWrapping="Wrap"></TextBlock>
+										</StackPanel>
+										<StackPanel
+											Orientation="Horizontal">
+											<TextBlock
+												FontFamily="Comic Sans MS"
+												Text="Производитель:"></TextBlock>
+											<StackPanel
+												Width="5"></StackPanel>
+											<TextBlock
+												FontFamily="Comic Sans MS"
+												Name="ProizvoditelProduct"
+												Text="{Binding ManufacturerName}"></TextBlock>
+										</StackPanel>
+										<StackPanel
+											Orientation="Vertical">
+											<TextBlock
+												FontFamily="Comic Sans MS"
+												Text="Цена:"></TextBlock>
+											<StackPanel
+												Width="5"></StackPanel>
+											<TextBlock
+												FontFamily="Comic Sans MS"
+												Text="{Binding ProductCost}"
+												Name="priceProduct"></TextBlock>
+										</StackPanel>
+									</StackPanel>
+									<StackPanel
+										Width="10"></StackPanel>
+									<StackPanel
+										Orientation="Vertical">
+										<TextBlock
+											Text="Наличие на складе"
+											FontFamily="Comic Sans MS"></TextBlock>
+										<StackPanel
+											Width="5"></StackPanel>
+										<TextBlock
+											Text="{Binding ProductQuantityInStock}"
+											Name="CountProductInScklad"
+											FontFamily="Comic Sans MS"></TextBlock>
+									</StackPanel>
+									<StackPanel
+										Width="10"></StackPanel>
+									<!--<Button
+										IsVisible="True"
+										FontFamily="Comic Sans MS"
+										Content="Редактировать"
+										Background="#76e383"
+										Tag="{Binding Productarticlenumber}"
+										Name="Redact"
+										Click="Redact_OnClick"></Button>
+									<StackPanel
+										Width="10"></StackPanel>-->
+									<Button
+										IsVisible="True"
+										Click="Button_OnClick"
+										FontFamily="Comic Sans MS"
+										Content="Удалить"
+										Tag="{Binding Productarticlenumber}"
+										Background="#76e383"
+										></Button>
+								</StackPanel>
+							</DataTemplate>
+						</ListBox.ItemTemplate>
+					</ListBox>
+			</Border>
+		<!--для пользователей-->
+		<Border
+			
+				Grid.Row="4"
+				BorderBrush="#498c51"
+				BorderThickness="10">
+					<ListBox 
+						IsVisible="False"
+					         Name="ListBoxItemsUser"
+					         FontFamily="Comic Sans MS">
+						<ListBox.ItemTemplate>
+							<DataTemplate>
+								<StackPanel
+									Width="1400"
+									Orientation="Horizontal">
+									<Image
+										Name="imageProduct"
+										Height="200"
+										Width="300"
+										Source="{Binding ImageProduct}"></Image>
+									<StackPanel
+										Width="10"></StackPanel>
+									<StackPanel
+										Orientation="Vertical">
+										<StackPanel
+											Orientation="Horizontal">
+											<TextBlock
+												FontFamily="Comic Sans MS"
+												Text="Наименование товара"
+												FontWeight="Bold"></TextBlock>
+											<StackPanel
+												Width="5"></StackPanel>
+											<TextBlock
+												FontWeight="Bold"
+												FontFamily="Comic Sans MS"
+												Text="{Binding ProductName}"></TextBlock>
+										</StackPanel>
+										<StackPanel
+											Orientation="Horizontal">
+											<TextBlock
+												FontFamily="Comic Sans MS"
+												Text="Описание товара"></TextBlock>
+											<StackPanel
+												Width="5"></StackPanel>
+											<TextBlock
+												Width="500"
+												Name="OpisanieProduct"
+												FontFamily="Comic Sans MS"
+												Text="{Binding ProductDescription}"
+												TextWrapping="Wrap"></TextBlock>
+										</StackPanel>
+										<StackPanel
+											Orientation="Horizontal">
+											<TextBlock
+												FontFamily="Comic Sans MS"
+												Text="Производитель:"></TextBlock>
+											<StackPanel
+												Width="5"></StackPanel>
+											<TextBlock
+												FontFamily="Comic Sans MS"
+												Name="ProizvoditelProduct"
+												Text="{Binding ManufacturerName}"></TextBlock>
+										</StackPanel>
+										<StackPanel
+											Orientation="Vertical">
+											<TextBlock
+												FontFamily="Comic Sans MS"
+												Text="Цена:"></TextBlock>
+											<StackPanel
+												Width="5"></StackPanel>
+											<TextBlock
+												FontFamily="Comic Sans MS"
+												Text="{Binding ProductCost}"
+												Name="priceProduct"></TextBlock>
+										</StackPanel>
+									</StackPanel>
+									<StackPanel
+										Width="10"></StackPanel>
+									<StackPanel
+										Orientation="Vertical">
+
+										<TextBlock
+											Text="Наличие на складе"
+											FontFamily="Comic Sans MS"></TextBlock>
+										<StackPanel
+											Width="5"></StackPanel>
+										<TextBlock
+											Text="{Binding ProductQuantityInStock}"
+											Name="CountProductInScklad"
+											FontFamily="Comic Sans MS"></TextBlock>
+									</StackPanel>
+								</StackPanel>
+							</DataTemplate>
+						</ListBox.ItemTemplate>
+					</ListBox>
+			</Border>
+		<!--низ-->
+		<StackPanel
+			Grid.Row="5"
+			HorizontalAlignment="Left"
+			Orientation="Horizontal">
+			<Button
+				             Content="Выход"
+				             Background="#498c51"
+				             Name="Exit"
+				             FontFamily="Comic Sans MS"
+				             Click="Exit_OnClick"></Button>
+		</StackPanel>
+		<StackPanel
+			HorizontalAlignment="Right"
+			Grid.Row="5"
+			Orientation="Horizontal">
+			<Button
+				Name="UpdateList"
+				Content="Обновить список"
+				Background="#76e383"
+				Click="UpdateList_OnClick"
+				IsVisible="True"></Button>
+			<StackPanel
+				Width="10"></StackPanel>
+			<Button
+				FontFamily="Comic Sans MS"
+				Name="AddProduct"
+				IsVisible="False"
+				Content="Добавить товар"
+				Background="#76e383"
+				Click="AddProduct_OnClick"></Button>
+		</StackPanel>
+	</Grid>
+</Window>
